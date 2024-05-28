@@ -155,7 +155,7 @@ void MyGLWidget::viewTransform ()    // Mètode que has de modificar
   else
   {
     glm::vec3 obs, up, VRP;
-    obs = glm::vec3(0, 5, 0);
+    obs = glm::vec3(0, 2*radiEsc, 0);
     up = glm::vec3(1, 0, 0);
     VRP = glm::vec3(0, 0, 0);
     View = glm::lookAt(obs, VRP, up);
@@ -170,8 +170,8 @@ void MyGLWidget::projectTransform ()
   else
   {
     glm::mat4 Proj;
-    if (ra >= 1) Proj = glm::ortho(-15.0f*ra, 15.0f*ra, -15.0f, 15.0f, 2.0f, 6.0f);
-    else Proj = glm::ortho(-15.0f, 15.0f, -15.0f/ra, 15.0f/ra, 2.0f, 6.0f);
+    if (ra >= 1) Proj = glm::ortho(-15.0f*ra, 15.0f*ra, -15.0f, 15.0f, zn, zf);
+    else Proj = glm::ortho(-15.0f, 15.0f, -15.0f/ra, 15.0f/ra, zn, zf);
     glUniformMatrix4fv (projLoc, 1, GL_FALSE, &Proj[0][0]);
   }
 }
